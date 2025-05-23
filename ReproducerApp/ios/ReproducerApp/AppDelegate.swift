@@ -3,6 +3,10 @@ import React
 import React_RCTAppDelegate
 import ReactAppDependencyProvider
 
+class LargeObject {
+    let data = Data(repeating: 0, count: 1_000_000) // 1MB
+}
+
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
   var window: UIWindow?
@@ -10,6 +14,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   var reactNativeDelegate: ReactNativeDelegate?
   var reactNativeFactory: RCTReactNativeFactory?
 
+  var memory: [LargeObject] = []
+  
   func application(
     _ application: UIApplication,
     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil
@@ -28,6 +34,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       in: window,
       launchOptions: launchOptions
     )
+    
+    for _ in 0..<1250 {
+        let lo = LargeObject()
+        memory.append(lo)
+    }
 
     return true
   }

@@ -1,0 +1,13 @@
+diff --git a/ReactCommon/react/featureflags/ReactNativeFeatureFlagsOverridesOSSStable.h b/ReactCommon/react/featureflags/ReactNativeFeatureFlagsOverridesOSSStable.h
+index 8f3e23de5599b7435f478a2343d18362edbad9bc..0aaebc1ceb95a2b0496fc5d8066a3bd6aa511701 100644
+--- a/ReactCommon/react/featureflags/ReactNativeFeatureFlagsOverridesOSSStable.h
++++ b/ReactCommon/react/featureflags/ReactNativeFeatureFlagsOverridesOSSStable.h
+@@ -32,5 +32,8 @@ class ReactNativeFeatureFlagsOverridesOSSStable
+   bool useShadowNodeStateOnClone() override {
+     return true;
+   }
++  bool enableJSRuntimeGCOnMemoryPressureOnIOS() override {
++    return true;
++  }
+ };
+ } // namespace facebook::react
